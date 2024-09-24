@@ -1,20 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import {Text, Image, View, TextInput} from 'react-native';
 
-export default function App() {
+const friends = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{
+      margin : 100,
+      alignItems : 'center'
+    }}>
+      <Image 
+      source = {require('./assets/friends.jpeg')}
+      style = {{
+        width : 400,
+        height : 200,
+      }}
+      />
+      <Text style = {{
+        marginVertical : 100,
+        fontSize : 20,
+        fontStyle : 'italic',
+        color : 'blue',
+        textDecorationLine : "underline"
+      }}>Friends</Text>
+
+      <TextInput
+      style = {{
+        height : 40,
+        width : 300,
+        borderWidth : 2,
+        borderColor : 'grey',
+        fontSize : 15,
+        color : 'red',
+        textAlign : 'center'
+
+      }}
+      defaultValue='Sorry for Raed and Hegazy'
+      />
+
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default friends;
