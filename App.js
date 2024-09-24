@@ -1,11 +1,26 @@
 import React from 'react';
-import {Text, Image, View, TextInput} from 'react-native';
+import {Text, Image, TextInput, ScrollView, StyleSheet , FlatList} from 'react-native';
 
-const friends = () => {
+
+
+const styles = StyleSheet.create({
+  item : {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+  },
+  flatListContainer : {
+    flex : 1,
+    justifyContent : 'space-evenly'
+  }
+});
+const Friends = () => {
   return (
-    <View style={{
-      margin : 100,
-      alignItems : 'center'
+    <ScrollView 
+
+    style={{
+      flex : 1,
+      marginTop : 100,
     }}>
       <Image 
       source = {require('./assets/friends.jpeg')}
@@ -14,13 +29,30 @@ const friends = () => {
         height : 200,
       }}
       />
-      <Text style = {{
-        marginVertical : 100,
+      <Text 
+    
+      style = {{
+        marginTop : 30,
         fontSize : 20,
         fontStyle : 'italic',
         color : 'blue',
-        textDecorationLine : "underline"
+        textDecorationLine : "underline",
+        textAlign: 'center'
       }}>Friends</Text>
+
+      <FlatList 
+      data = {[
+        {key : '1. Ahmed Helmy'},
+        {key : '2. Ahmed Salah'},
+        {key : '3. Ahmed Elbelehy'},
+        {key : '4. Khaled Ghazy'},
+        {key : '5. Mohamed Eldahtory'},
+      ]}
+      renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+      numColumns={2}
+      columnWrapperStyle={styles.flatListContainer}
+      keyExtractor={(item) => item.key}
+      />
 
       <TextInput
       style = {{
@@ -30,14 +62,15 @@ const friends = () => {
         borderColor : 'grey',
         fontSize : 15,
         color : 'red',
-        textAlign : 'center'
-
+        textAlign : 'center',
+        marginTop : 30,
+        marginLeft:50
       }}
       defaultValue='Sorry for Raed and Hegazy'
       />
 
-    </View>
+    </ScrollView>
   );
 };
 
-export default friends;
+export default Friends;
